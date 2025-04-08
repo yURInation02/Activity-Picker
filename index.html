@@ -10,11 +10,22 @@
 <body>
 
     <div id="container">
+        <div id="buttonContainer">
+            <button id="activityBtn">Do This!!</button>
+        </div>
 
+        <form id="activityForm">
+            <input type="text" id="newActivity" required placeholder="New Activity..." />
+            <button type="submit">+</button>
+        </form>
     </div>
 
     <table id="activityTable">
-
+        <tr>
+            <th>Activity</th>
+            <th>Last Done</th>
+            <th>Delete</th>
+        </tr>
     </table>
 
     <div id="selectedActivity">
