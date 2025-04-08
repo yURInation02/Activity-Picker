@@ -5,6 +5,7 @@ TO DO Feature:
     - Picked activity shows up on a screen as a overlay
     - Recently picked activty has lower chance of being picked again at Default
         - But, set priority to alter the likelihood of being picked consectively
+        - Maybe Object??
 
 3/31: created a repo
 
