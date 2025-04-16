@@ -10,3 +10,5 @@ TO DO Feature:
 3/31: created a repo
 
 4/8: wrote fundational codes on HTML, css, js
+
+4/16: Added some CSS and HTML
