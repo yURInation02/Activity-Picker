@@ -6,9 +6,23 @@ TO DO Feature:
     - Recently picked activty has lower chance of being picked again at Default
         - But, set priority to alter the likelihood of being picked consectively
         - Maybe Object??
+    - Select how many activites to pick
 
 3/31: created a repo
 
 4/8: wrote fundational codes on HTML, css, js
 
 4/16: Added some CSS and HTML
+
+4/17: Added commonts on README and JS
+
+List of activities: 
+    Magic
+    Coding
+    Guitar
+    Investment
+    Game 
+    E Game
+    Reading
+    Think about Carrer (job hunting, education etc)
+    Break (can be included as a default)
