@@ -16,6 +16,8 @@ TO DO Feature:
 
 4/17: Added commonts on README and JS
 
+4/18: Added JSON file and started building JS
+
 List of activities: 
     Magic
     Coding
