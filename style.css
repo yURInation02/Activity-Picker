@@ -1,5 +1,10 @@
 /* Style Sheet for Activity Picker */
 
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #container{
     display: flex;
     flex-direction: column;
@@ -16,14 +21,13 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(70, 70, 70);
-    width: 60%;
+    width: 100%;
     height: 200px;
 }
 
 #activityBtn{
     background-color: red;
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 3rem;
     font-weight: bold;
     padding: 15px;
@@ -31,6 +35,9 @@
     cursor: pointer;
     border: none;
     border-radius: 10px;
+    width: 40%;
+    min-width: 300px;
+    height: 55%
 }
 
 #activityBtn:hover{
@@ -56,4 +63,21 @@
     height: 55px;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+#selectedActivity{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    background-color: hsla(0, 0%, 0%, 0.484);
+    top:0px;
+    display: none;
+}
+
+.overlay{
+    display: block;
+    /* maybe add animation */
 }
