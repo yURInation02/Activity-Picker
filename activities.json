@@ -1,12 +1,16 @@
-[
-    {"name":"Break", "lastUpdateDate": null},
-    {"name":"Guitar", "lastUpdateDate": null},
-    {"name":"Finance", "lastUpdateDate": null}, 
-    {"name":"Game", "lastUpdateDate": null}, 
-    {"name":"E Game", "lastUpdateDate": null},
-    {"name":"Career", "lastUpdateDate": null}, 
-    {"name":"Reading", "lastUpdateDate": null},
-    {"name":"Magic", "lastUpdateDate": null},
-    {"name":"Beatbox", "lastUpdateDate": null},
-    {"name": "drawing", "lastUpdateDate": null}
-]
+{
+    "activityList":[
+        {"name":"Break", "lastUpdateDate": null},
+        {"name":"Guitar", "lastUpdateDate": null},
+        {"name":"Finance", "lastUpdateDate": null}, 
+        {"name":"Game", "lastUpdateDate": null}, 
+        {"name":"E Game", "lastUpdateDate": null},
+        {"name":"Career", "lastUpdateDate": null}, 
+        {"name":"Reading", "lastUpdateDate": null},
+        {"name":"Magic", "lastUpdateDate": null},
+        {"name":"Beatbox", "lastUpdateDate": null},
+        {"name": "drawing", "lastUpdateDate": null}
+    ],
+ 
+    "lastPicked":{}
+}

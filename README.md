@@ -2,10 +2,10 @@ A website that picks an activity randomly from a set of activites you put it.
 
 TO DO Feature:
     - Toggle show/no show table 
-    - Picked activity shows up on a screen as a overlay
+    - ✅Picked activity shows up on a screen as a overlay
+    - add animation for the Overlay
     - Recently picked activty has lower chance of being picked again at Default
         - But, set priority to alter the likelihood of being picked consectively
-        - Maybe Object??
     - Select how many activites to pick
 
 3/31: created a repo
@@ -17,6 +17,9 @@ TO DO Feature:
 4/17: Added commonts on README and JS
 
 4/18: Added JSON file and started building JS
+
+4/19: Added a pickedLast key to a JSON object
+      Finished a random picker (SIMPLE) and added HTML/CSS for overlay
 
 List of activities: 
     Magic
