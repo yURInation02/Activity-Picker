@@ -33,6 +33,10 @@
     border-radius: 10px;
 }
 
+#activityBtn:hover{
+    background-color: rgb(175, 0, 0);
+}
+
 #activityForm{
     display: flex;
     align-items: center;
