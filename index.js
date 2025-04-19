@@ -22,8 +22,7 @@ activityBtn.addEventListener("click", ()=>{
     const randIndex = Math.floor(Math.random() * testArray.length);
     const pickedObject = testArray[randIndex];
     selectedActivity.textContent = pickedObject.name;
-    
-    
+    selectedActivity.style.display = "block";
 })
 
 
