@@ -7,32 +7,31 @@ const activityForm = document.getElementById("activityForm");
 const activityTable = document.getElementById("activityTable");
 const activityInput = document.getElementById("activityInput");
 const selectedActivity = document.getElementById("selectedActivity");
+const activityRows = document.querySelectorAll("tr");
 
-const data = {
+// const data = {
 
-    "activityList":[
-        {"name":"Break", "lastUpdateDate": null},
-        {"name":"Guitar", "lastUpdateDate": null},
-        {"name":"Finance", "lastUpdateDate": null}, 
-        {"name":"Game", "lastUpdateDate": null}, 
-        {"name":"E Game", "lastUpdateDate": null},
-        {"name":"Career", "lastUpdateDate": null}, 
-        {"name":"Reading", "lastUpdateDate": null},
-        {"name":"Magic", "lastUpdateDate": null},
-        {"name":"Beatbox", "lastUpdateDate": null},
-        {"name": "Drawing", "lastUpdateDate": null}
-    ],
+//     "activityList":[
+//         {"name":"Break", "lastUpdateDate": null},
+//         {"name":"Guitar", "lastUpdateDate": null},
+//         {"name":"Finance", "lastUpdateDate": null}, 
+//         {"name":"Game", "lastUpdateDate": null}, 
+//         {"name":"E Game", "lastUpdateDate": null},
+//         {"name":"Career", "lastUpdateDate": null}, 
+//         {"name":"Reading", "lastUpdateDate": null},
+//         {"name":"Magic", "lastUpdateDate": null},
+//         {"name":"Beatbox", "lastUpdateDate": null},
+//         {"name": "Drawing", "lastUpdateDate": null}
+//     ],
  
-    "lastPicked":{}
-}
+//     "lastPicked":{}
+// }
 
 // Save it to localStorage
 // localStorage.setItem('myData', JSON.stringify(data));
 
 // Retrieve from localStorage or return an empty object if null
 let storedData = JSON.parse(localStorage.getItem('myData')) || {};
-
-
 
 
 //Pick a random activity
@@ -59,8 +58,7 @@ activityBtn.addEventListener("click", ()=>{
     }
 
     // Save the updated version back to localStorage
-    localStorage.setItem('myData', JSON.stringify(storedData));
-
+    saveToStorage();
 })
 
 
@@ -74,16 +72,35 @@ activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
     const activity = activityInput.value.trim();
+    const newActivity = {"name":activity, "lastUpdateDate":null};
 
     if(activity){
         try{
             // add the activity to table below as well as JSON
+            let row = activityTable.insertRow(1); //index 0: insert at bottom. index 1: insert at top
+            let nameCell = row.insertCell(0);
+            //let lastDateCell = row.insertCell(1);
+
+            storedData.activityList.push(newActivity);
+            nameCell.innerHTML = newActivity.name;
+
+            activityInput.value = "";
+
+            saveToStorage();
         }
         catch(error){
             console.error(error);
         }
     }
     else{
-        displayError("Please Enter an activity");
+        console.log("Please enter an activity")
     }
 })
+
+activityRows.addEventListener("click", (event)=>{
+    //Delete a row that is clicked as well as its corresponding object from storedDate and then update the localStorage
+})
+
+function saveToStorage(){
+    localStorage.setItem('myData', JSON.stringify(storedData));
+}
