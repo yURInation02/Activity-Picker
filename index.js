@@ -29,8 +29,8 @@ const data = {
 // Save it to localStorage
 // localStorage.setItem('myData', JSON.stringify(data));
 
-// Retrieve it later
-const storedData = JSON.parse(localStorage.getItem('myData'));
+// Retrieve from localStorage or return an empty object if null
+let storedData = JSON.parse(localStorage.getItem('myData')) || {};
 
 
 
@@ -73,7 +73,7 @@ activityBtn.addEventListener("click", ()=>{
 activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
-    const activity = activityInput.value;
+    const activity = activityInput.value.trim();
 
     if(activity){
         try{
