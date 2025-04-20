@@ -8,34 +8,59 @@ const activityTable = document.getElementById("activityTable");
 const activityInput = document.getElementById("activityInput");
 const selectedActivity = document.getElementById("selectedActivity");
 
-const testArray = [
-                    {"name":"activity1", "lastUpdateDate": null, "pickedLast":false},
-                    {"name":"activity2", "lastUpdateDate": null, "pickedLast":false},
-                    {"name":"activity3", "lastUpdateDate": null, "pickedLast":false},
-                    {"name":"activity4", "lastUpdateDate": null, "pickedLast":false}
-                    ]
+const data = {
+
+    "activityList":[
+        {"name":"Break", "lastUpdateDate": null},
+        {"name":"Guitar", "lastUpdateDate": null},
+        {"name":"Finance", "lastUpdateDate": null}, 
+        {"name":"Game", "lastUpdateDate": null}, 
+        {"name":"E Game", "lastUpdateDate": null},
+        {"name":"Career", "lastUpdateDate": null}, 
+        {"name":"Reading", "lastUpdateDate": null},
+        {"name":"Magic", "lastUpdateDate": null},
+        {"name":"Beatbox", "lastUpdateDate": null},
+        {"name": "Drawing", "lastUpdateDate": null}
+    ],
+ 
+    "lastPicked":{}
+}
+
+// Save it to localStorage
+// localStorage.setItem('myData', JSON.stringify(data));
+
+// Retrieve it later
+const storedData = JSON.parse(localStorage.getItem('myData'));
+
+
+
 
 //Pick a random activity
     //Use math to randomly pick a activity with activity from yesterday not being chosen(SIMPLE)
     //Use Math to randomly pick an acitivty with more recently activties having lower chance of being picked (ADVANCED)
 activityBtn.addEventListener("click", ()=>{
 
-    let randIndex;
-    let pickedObject;
-
     while(true){
-        randIndex = Math.floor(Math.random() * testArray.length);
-        pickedObject = testArray[randIndex];
-        if(pickedObject.pickedLast){
+
+        const randIndex = Math.floor(Math.random() * storedData.activityList.length);
+        const pickedObject = storedData.activityList[randIndex];
+
+        if(pickedObject.name == storedData.lastPicked.name){
             continue;
         }
         else{
+            storedData.lastPicked = null;
+            storedData.lastPicked = pickedObject;
+
+            selectedActivity.textContent = pickedObject.name;
+            selectedActivity.style.display = "block";
             break;
         }
     }
 
-    selectedActivity.textContent = pickedObject.name;
-    selectedActivity.style.display = "block";
+    // Save the updated version back to localStorage
+    localStorage.setItem('myData', JSON.stringify(storedData));
+
 })
 
 
