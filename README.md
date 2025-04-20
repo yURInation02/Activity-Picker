@@ -20,6 +20,7 @@ TO DO Feature:
 
 4/19: Added a pickedLast key to a JSON object
       Finished a random picker (SIMPLE) and added HTML/CSS for overlay
+      added localStorage to JS to save data locally. Might not need JSON unless we use backend
 
 List of activities: 
     Magic
