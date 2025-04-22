@@ -7,7 +7,7 @@ const activityForm = document.getElementById("activityForm");
 const activityTable = document.getElementById("activityTable");
 const activityInput = document.getElementById("activityInput");
 const selectedActivity = document.getElementById("selectedActivity");
-const activityRows = document.querySelectorAll("tr");
+const activityRows = document.querySelectorAll("#activityTable tbody tr");
 
 // const data = {
 
@@ -31,7 +31,7 @@ const activityRows = document.querySelectorAll("tr");
 // localStorage.setItem('myData', JSON.stringify(data));
 
 // Retrieve from localStorage or return an empty object if null
-let storedData = JSON.parse(localStorage.getItem('myData')) || {};
+let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":null};
 
 
 //Pick a random activity
@@ -59,6 +59,7 @@ activityBtn.addEventListener("click", ()=>{
 
     // Save the updated version back to localStorage
     saveToStorage();
+    updateTable();
 })
 
 
@@ -72,21 +73,17 @@ activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
     const activity = activityInput.value.trim();
-    const newActivity = {"name":activity, "lastUpdateDate":null};
+    const newActivity = {"name":activity, "lastUpdateDate":null, "priority":null};
 
     if(activity){
         try{
-            // add the activity to table below as well as JSON
-            let row = activityTable.insertRow(1); //index 0: insert at bottom. index 1: insert at top
-            let nameCell = row.insertCell(0);
-            //let lastDateCell = row.insertCell(1);
 
             storedData.activityList.push(newActivity);
-            nameCell.innerHTML = newActivity.name;
 
             activityInput.value = "";
 
             saveToStorage();
+            updateTable();
         }
         catch(error){
             console.error(error);
@@ -101,6 +98,31 @@ activityRows.addEventListener("click", (event)=>{
     //Delete a row that is clicked as well as its corresponding object from storedDate and then update the localStorage
 })
 
+function updateTable(){
+    while(activityRows.length > 0){ //Clear all rows from table
+        activityRows.forEach(row => row.remove());
+    }
+    storedData.activityList.forEach((activity, index) => {
+        // add the activity to table below as well as JSON
+        let row = activityTable.tbody.insertRow(1); //index 0: insert at bottom. index 1: insert at top
+        let nameCell = row.insertCell(0);
+        let lastDateCell = row.insertCell(0);
+        let priorityCell = row.insertCell(0);
+
+        nameCell.innerHTML = activity.name;
+        lastDateCell.innerHTML = "";
+        priorityCell.innerHTML = "";
+
+        row.onclick = () =>{
+            storedData.activityList.splice(index, 1) //remove item on click
+            saveToStorage();
+            updateTable();
+        }
+    })
+}
+
 function saveToStorage(){
     localStorage.setItem('myData', JSON.stringify(storedData));
 }
+
+updateTable();

@@ -22,6 +22,8 @@ TO DO Feature:
       Finished a random picker (SIMPLE) and added HTML/CSS for overlay
       added localStorage to JS to save data locally. Might not need JSON unless we use backend
 
+4/22: added a function to update a list
+
 List of activities: 
     Magic
     Coding
