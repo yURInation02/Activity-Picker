@@ -23,6 +23,7 @@ TO DO Feature:
       added localStorage to JS to save data locally. Might not need JSON unless we use backend
 
 4/22: added a function to update a list
+        CURRENT ISSUE: duplicates of Activities are saved on storedData (localStorage)
 
 List of activities: 
     Magic
