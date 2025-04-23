@@ -8,7 +8,8 @@ const activityForm = document.getElementById("activityForm");
 const activityTable = document.getElementById("activityTable");
 const activityInput = document.getElementById("activityInput");
 const selectedActivity = document.getElementById("selectedActivity");
-const activityRows = document.querySelectorAll("#activityTable tbody tr");
+const activityRows = document.querySelectorAll("tbody tr");
+
 
 // Retrieve from localStorage or return an empty object if null
 let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":null, "priority":null};
@@ -18,24 +19,30 @@ let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[
     //Use math to randomly pick a activity with activity from yesterday not being chosen(SIMPLE)
     //Use Math to randomly pick an acitivty with more recently activties having lower chance of being picked (ADVANCED)
 activityBtn.addEventListener("click", ()=>{
+    if(storedData.activityList){
+        while(true){
 
-    while(storedData.activityList && storedData.lastPickeds){
-
-        const randIndex = Math.floor(Math.random() * storedData.activityList.length);
-        const pickedObject = storedData.activityList[randIndex];
-
-        if(pickedObject.name == storedData.lastPicked.name){
-            continue;
-        }
-        else{
-            storedData.lastPicked = null;
-            storedData.lastPicked = pickedObject;
-
-            selectedActivity.textContent = pickedObject.name;
-            selectedActivity.style.display = "block";
-            break;
+            const randIndex = Math.floor(Math.random() * storedData.activityList.length);
+            const pickedObject = storedData.activityList[randIndex];
+    
+            if(storedData.pickedObject && pickedObject.name == storedData.lastPicked.name){
+                continue;
+            }
+            else{
+                storedData.lastPicked = null;
+                storedData.lastPicked = pickedObject;
+    
+                selectedActivity.textContent = pickedObject.name;
+                selectedActivity.style.display = "block";
+                break;
+            }
         }
     }
+    else{
+        //Add Message to show when no activity is in a list
+        console.log("Please Add activities first...");
+    }
+    
 
     // Save the updated version back to localStorage
     saveToStorage();
@@ -76,8 +83,10 @@ activityForm.addEventListener("submit", event =>{
 
 
 function updateTable(){
-    while(activityRows.length > 0){ //Clear all rows from table
-        activityRows.forEach(row => row.remove());
+    //Code to delete all the rows (Overhaul of all table/its rows related variables)
+    for(let i = activityRows.length - 1; i > 0; i--){
+        activityTable.deleteRow(i);
+        console.log("check");
     }
     storedData.activityList.forEach((activity, index) => {
         // add the activity to table below as well as JSON
