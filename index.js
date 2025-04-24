@@ -5,10 +5,11 @@
 
 const activityBtn = document.getElementById("activityBtn");
 const activityForm = document.getElementById("activityForm");
-const activityTable = document.getElementById("activityTable");
+const activityTable = document.querySelector("#activityTable tbody");
 const activityInput = document.getElementById("activityInput");
 const selectedActivity = document.getElementById("selectedActivity");
-const activityRows = document.querySelectorAll("tbody tr");
+
+//localStorage.clear();
 
 
 // Retrieve from localStorage or return an empty object if null
@@ -25,7 +26,7 @@ activityBtn.addEventListener("click", ()=>{
             const randIndex = Math.floor(Math.random() * storedData.activityList.length);
             const pickedObject = storedData.activityList[randIndex];
     
-            if(storedData.pickedObject && pickedObject.name == storedData.lastPicked.name){
+            if(storedData.lastPicked && pickedObject.name == storedData.lastPicked.name){
                 continue;
             }
             else{
@@ -84,13 +85,13 @@ activityForm.addEventListener("submit", event =>{
 
 function updateTable(){
     //Code to delete all the rows (Overhaul of all table/its rows related variables)
-    for(let i = activityRows.length - 1; i > 0; i--){
-        activityTable.deleteRow(i);
+    while(activityTable.rows.length > 0){
+        activityTable.deleteRow(0);
         console.log("check");
     }
     storedData.activityList.forEach((activity, index) => {
         // add the activity to table below as well as JSON
-        let row = activityTable.insertRow(1); //index 0: insert at bottom. index 1: insert at top
+        let row = activityTable.insertRow(); //index 0: insert at bottom. index 1: insert at top
         let nameCell = row.insertCell(0);
         let lastDateCell = row.insertCell(0);
         let priorityCell = row.insertCell(0);

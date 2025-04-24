@@ -25,6 +25,8 @@ TO DO Feature:
 4/22: added a function to update a list
         CURRENT ISSUE: duplicates of Activities are saved on storedData (localStorage)
 
+4/24: Fixed the duplicates bug of the table. Fixed a bug at random picker
+
 List of activities: 
     Magic
     Coding
