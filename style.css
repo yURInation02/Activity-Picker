@@ -79,6 +79,18 @@ body{
     display: none;
 }
 
+#activityTable{
+    border-collapse: collapse;
+    width: 100vw;
+}
+
+#activityTable tr{
+    cursor: pointer;
+    text-align: center;
+}
+
+#activityTable tr:nth-child(even){background-color: #f2f2f2;}
+
 .overlay{
     display: block;
     /* maybe add animation */

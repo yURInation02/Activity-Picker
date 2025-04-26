@@ -27,6 +27,8 @@ TO DO Feature:
 
 4/24: Fixed the duplicates bug of the table. Fixed a bug at random picker
 
+4/25: added CSS on table and added filler values to empty cells of the table
+
 List of activities: 
     Magic
     Coding

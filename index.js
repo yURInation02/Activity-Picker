@@ -93,12 +93,12 @@ function updateTable(){
         // add the activity to table below as well as JSON
         let row = activityTable.insertRow(); //index 0: insert at bottom. index 1: insert at top
         let nameCell = row.insertCell(0);
-        let lastDateCell = row.insertCell(0);
-        let priorityCell = row.insertCell(0);
+        let lastDateCell = row.insertCell(1);
+        let priorityCell = row.insertCell(2);
 
         nameCell.innerHTML = activity.name;
-        lastDateCell.innerHTML = "";
-        priorityCell.innerHTML = "";
+        lastDateCell.innerHTML = "null";
+        priorityCell.innerHTML = "null";
 
         row.onclick = () =>{
             storedData.activityList.splice(index, 1) //remove item on click
