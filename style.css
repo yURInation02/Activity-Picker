@@ -65,6 +65,12 @@ body{
     cursor: pointer;
 }
 
+#errorMsg{
+    display: none;
+    color: red;
+    text-align: center;
+}
+
 #selectedActivity{
     position: fixed;
     width: 100vw;
