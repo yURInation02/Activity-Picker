@@ -29,6 +29,9 @@ TO DO Feature:
 
 4/25: added CSS on table and added filler values to empty cells of the table
 
+5/18: created a new feature branch and started working on weight feature based on date.
+        Added a function created by ChatGpt and Modified it
+
 List of activities: 
     Magic
     Coding

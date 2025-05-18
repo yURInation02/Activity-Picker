@@ -88,6 +88,29 @@ activityForm.addEventListener("submit", event =>{
 })
 
 
+function weightedRandomPick(activities) {
+    const now = new Date();
+  
+    // Calculate weight as the number of days since the item was added
+    const activitiesWithWeights = activities.map(activity => {
+      const lastUpdate = new Date(activity.lastUpdate);
+      const timeDiff = now - lastUpdate;
+      const daysSinceUpdate = Math.max(1, Math.floor(timeDiff / (1000 * 60 * 60 * 24))); // At least 1 day
+      return { ...activity, weight: daysSinceUpdate };
+    });
+  
+    const totalWeight = activitiesWithWeights.reduce((sum, activity) => sum + activity.weight, 0);
+    let random = Math.random() * totalWeight;
+  
+    for (const activity of activitiesWithWeights) {
+      if (random < activity.weight) {
+        return activity;
+      }
+      random -= activity.weight;
+    }
+  }
+
+
 function updateTable(){
     //Code to delete all the rows (Overhaul of all table/its rows related variables)
     while(activityTable.rows.length > 0){
