@@ -13,7 +13,7 @@ const errorMsg = document.getElementById("errorMsg");
 //localStorage.clear();
 
 // Retrieve from localStorage or return an empty object if null
-let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":null, "priority":null};
+let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":{}};
 
 
 //Pick a random activity
@@ -23,8 +23,10 @@ activityBtn.addEventListener("click", ()=>{
     if(storedData.activityList){
         while(true){
 
-            const randIndex = Math.floor(Math.random() * storedData.activityList.length);
-            const pickedObject = storedData.activityList[randIndex];
+            pickedObject = weightedRandomPick(storedData.activityList);
+
+            // const randIndex = Math.floor(Math.random() * storedData.activityList.length);
+            // const pickedObject = storedData.activityList[randIndex];
 
             errorMsg.style.display = "none";
     
@@ -93,7 +95,7 @@ function weightedRandomPick(activities) {
   
     // Calculate weight as the number of days since the item was added
     const activitiesWithWeights = activities.map(activity => {
-      const lastUpdate = new Date(activity.lastUpdate);
+      const lastUpdate = new Date(activity.lastUpdateDate);
       const timeDiff = now - lastUpdate;
       const daysSinceUpdate = Math.max(1, Math.floor(timeDiff / (1000 * 60 * 60 * 24))); // At least 1 day
       return { ...activity, weight: daysSinceUpdate };
