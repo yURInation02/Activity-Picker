@@ -4,7 +4,7 @@ TO DO Feature:
     - Toggle show/no show table 
     - ✅Picked activity shows up on a screen as a overlay
     - add animation for the Overlay
-    - Recently picked activty has lower chance of being picked again at Default
+    - ✅Recently picked activty has lower chance of being picked again at Default
         - But, set priority to alter the likelihood of being picked consectively
     - Select how many activites to pick
 
@@ -28,6 +28,11 @@ TO DO Feature:
 4/24: Fixed the duplicates bug of the table. Fixed a bug at random picker
 
 4/25: added CSS on table and added filler values to empty cells of the table
+
+5/18: created a new feature branch and started working on weight feature based on date.
+        Added a function created by ChatGpt and Modified it
+
+5/26: completed the weightedRandomPick by date program. Ran some test and fixed some bugs.
 
 List of activities: 
     Magic

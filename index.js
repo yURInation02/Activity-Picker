@@ -13,7 +13,7 @@ const errorMsg = document.getElementById("errorMsg");
 //localStorage.clear();
 
 // Retrieve from localStorage or return an empty object if null
-let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":null, "priority":null};
+let storedData = JSON.parse(localStorage.getItem('myData')) || {"activityList":[], "lastPicked":{}};
 
 
 //Pick a random activity
@@ -23,8 +23,11 @@ activityBtn.addEventListener("click", ()=>{
     if(storedData.activityList){
         while(true){
 
-            const randIndex = Math.floor(Math.random() * storedData.activityList.length);
-            const pickedObject = storedData.activityList[randIndex];
+            pickedObject = weightedRandomPick(storedData.activityList);
+
+            console.log(pickedObject);
+            // const randIndex = Math.floor(Math.random() * storedData.activityList.length);
+            // const pickedObject = storedData.activityList[randIndex];
 
             errorMsg.style.display = "none";
     
@@ -63,7 +66,9 @@ activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
     const activity = activityInput.value.trim();
-    const newActivity = {"name":activity, "lastUpdateDate":null, "priority":null};
+    const newActivity = {"name":activity,
+                        "lastUpdateDate":new Date().toISOString().split("T")[0],
+                        "priority":null};
 
     errorMsg.style.display = "none";
 
@@ -86,6 +91,33 @@ activityForm.addEventListener("submit", event =>{
         errorMsg.style.display = "block";
     }
 })
+
+
+function weightedRandomPick(activities) {
+    const now = new Date();
+  
+    // Calculate weight as the number of days since the item was added
+    const activitiesWithWeights = activities.map(activity => {
+      const lastUpdate = new Date(activity.lastUpdateDate);
+      const timeDiff = now - lastUpdate;
+      const daysSinceUpdate = Math.max(1, Math.floor(timeDiff / (1000 * 60 * 60 * 24))); // At least 1 day
+      return { ...activity, weight: daysSinceUpdate };
+    });
+  
+    const totalWeight = activitiesWithWeights.reduce((sum, activity) => sum + activity.weight, 0);
+    let random = Math.random() * totalWeight;
+  
+
+    for (let i = 0; i < activitiesWithWeights.length; i++) {
+        const activity = activitiesWithWeights[i];
+        if (random < activity.weight) {
+          // Update the original array's lastUpdateDate
+          activities[i].lastUpdateDate = now.toISOString().split("T")[0]; // Format as "YYYY-MM-DD"
+          return activities[i];
+        }
+        random -= activity.weight;
+    }
+  }
 
 
 function updateTable(){
