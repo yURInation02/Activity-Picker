@@ -25,6 +25,7 @@ activityBtn.addEventListener("click", ()=>{
 
             pickedObject = weightedRandomPick(storedData.activityList);
 
+            console.log(pickedObject);
             // const randIndex = Math.floor(Math.random() * storedData.activityList.length);
             // const pickedObject = storedData.activityList[randIndex];
 
@@ -114,7 +115,7 @@ function weightedRandomPick(activities) {
           activities[i].lastUpdateDate = now.toISOString().split("T")[0]; // Format as "YYYY-MM-DD"
           return activities[i];
         }
-        random -= item.weight;
+        random -= activity.weight;
     }
   }
 
