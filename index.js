@@ -65,7 +65,9 @@ activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
     const activity = activityInput.value.trim();
-    const newActivity = {"name":activity, "lastUpdateDate":null, "priority":null};
+    const newActivity = {"name":activity,
+                        "lastUpdateDate":new Date().toISOString().split("T")[0],
+                        "priority":null};
 
     errorMsg.style.display = "none";
 
@@ -104,11 +106,15 @@ function weightedRandomPick(activities) {
     const totalWeight = activitiesWithWeights.reduce((sum, activity) => sum + activity.weight, 0);
     let random = Math.random() * totalWeight;
   
-    for (const activity of activitiesWithWeights) {
-      if (random < activity.weight) {
-        return activity;
-      }
-      random -= activity.weight;
+
+    for (let i = 0; i < activitiesWithWeights.length; i++) {
+        const activity = activitiesWithWeights[i];
+        if (random < activity.weight) {
+          // Update the original array's lastUpdateDate
+          activities[i].lastUpdateDate = now.toISOString().split("T")[0]; // Format as "YYYY-MM-DD"
+          return activities[i];
+        }
+        random -= item.weight;
     }
   }
 
