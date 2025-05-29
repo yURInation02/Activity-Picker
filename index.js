@@ -103,7 +103,7 @@ function weightedRandomPick(activities) {
       const lastUpdate = new Date(activity.lastUpdateDate);
       const timeDiff = now - lastUpdate;
       const daysSinceUpdate = Math.max(1, Math.floor(timeDiff / (1000 * 60 * 60 * 24))); // At least 1 day
-      return { ...activity, weight: daysSinceUpdate };
+      return { ...activity, weight: daysSinceUpdate * activity.priority };
     });
   
     const totalWeight = activitiesWithWeights.reduce((sum, activity) => sum + activity.weight, 0);
