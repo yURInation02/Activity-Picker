@@ -58,6 +58,15 @@ body{
     padding:8px;
 }
 
+#priorityInput{
+    width:50px;
+    height:40px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding:8px;
+    text-align: center;
+}
+
 #submitBtn{
     width: 55px;
     height: 55px;
