@@ -7,6 +7,7 @@ const activityBtn = document.getElementById("activityBtn");
 const activityForm = document.getElementById("activityForm");
 const activityTable = document.querySelector("#activityTable tbody");
 const activityInput = document.getElementById("activityInput");
+const priorityInput = document.getElementById("priorityInput");
 const selectedActivity = document.getElementById("selectedActivity");
 const errorMsg = document.getElementById("errorMsg");
 
@@ -66,9 +67,10 @@ activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
     const activity = activityInput.value.trim();
+    const priority = priorityInput.value;
     const newActivity = {"name":activity,
                         "lastUpdateDate":new Date().toISOString().split("T")[0],
-                        "priority":null};
+                        "priority":priority};
 
     errorMsg.style.display = "none";
 
@@ -134,8 +136,8 @@ function updateTable(){
         let priorityCell = row.insertCell(2);
 
         nameCell.innerHTML = activity.name;
-        lastDateCell.innerHTML = "null";
-        priorityCell.innerHTML = "null";
+        lastDateCell.innerHTML = activity.lastUpdateDate;
+        priorityCell.innerHTML = activity.priority;
 
         row.onclick = () =>{
             storedData.activityList.splice(index, 1) //remove item on click

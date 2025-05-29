@@ -34,6 +34,8 @@ TO DO Feature:
 
 5/26: completed the weightedRandomPick by date program. Ran some test and fixed some bugs.
 
+5/29: created a new branch for priority feature
+
 List of activities: 
     Magic
     Coding
