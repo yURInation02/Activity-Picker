@@ -5,8 +5,7 @@ TO DO Feature:
     - ✅Picked activity shows up on a screen as a overlay
     - add animation for the Overlay
     - ✅Recently picked activty has lower chance of being picked again at Default
-        - But, set priority to alter the likelihood of being picked consectively
-    - Select how many activites to pick
+        - ✅But, set priority to alter the likelihood of being picked consectively
 
 3/31: created a repo
 
