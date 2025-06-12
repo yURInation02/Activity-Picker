@@ -4,7 +4,7 @@ TO DO Feature:
     - Toggle show/no show table 
     - ✅Picked activity shows up on a screen as a overlay
     - add animation for the Overlay
-    - Priority number on HTML -> color coding
+    - Priority number on HTML -> color coding (use pic or vector image)
     - ✅Recently picked activty has lower chance of being picked again at Default
         - ✅But, set priority to alter the likelihood of being picked consectively
 
@@ -35,6 +35,8 @@ TO DO Feature:
 5/26: completed the weightedRandomPick by date program. Ran some test and fixed some bugs.
 
 5/29: created and completed a new branch for priority feature
+
+6/12: created a new branch to overhaul the CSS styling
 
 List of activities: 
     Magic
