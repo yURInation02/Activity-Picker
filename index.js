@@ -27,8 +27,6 @@ activityBtn.addEventListener("click", ()=>{
             pickedObject = weightedRandomPick(storedData.activityList);
 
             console.log(pickedObject);
-            // const randIndex = Math.floor(Math.random() * storedData.activityList.length);
-            // const pickedObject = storedData.activityList[randIndex];
 
             errorMsg.style.display = "none";
     
@@ -58,18 +56,17 @@ activityBtn.addEventListener("click", ()=>{
 })
 
 
-//Generate a list of objects using Class constructor. 
-    //Each Object = An acitivty (name, last date, priority)
-    //Date of it was entered -> object.lastDate
-        //Update lastDate when chosen randomly
-
+//Add a new activity (and its priority) as an object
 activityForm.addEventListener("submit", event =>{
     event.preventDefault();
 
+    //take value from HTML form
     const activity = activityInput.value.trim();
     const priority = priorityInput.value;
+
+    //object constructor
     const newActivity = {"name":activity,
-                        "lastUpdateDate":new Date().toISOString().split("T")[0],
+                        "lastUpdateDate":new Date().toISOString().split("T")[0], //initial lastUpdateDate = date created
                         "priority":priority};
 
     errorMsg.style.display = "none";
@@ -77,8 +74,8 @@ activityForm.addEventListener("submit", event =>{
     if(activity){
         try{
 
+            //add the new activity object to the array of objects on localStorage, then reset the HTML input
             storedData.activityList.push(newActivity);
-
             activityInput.value = "";
 
             saveToStorage();
@@ -94,12 +91,13 @@ activityForm.addEventListener("submit", event =>{
     }
 })
 
-
+//Function for weighted random picker
 function weightedRandomPick(activities) {
     const now = new Date();
   
-    // Calculate weight as the number of days since the item was added
+    // Calculate weight as the number of days since the item was added, and priority
     const activitiesWithWeights = activities.map(activity => {
+        //New array of objects with weight value for each activity
       const lastUpdate = new Date(activity.lastUpdateDate);
       const timeDiff = now - lastUpdate;
       const daysSinceUpdate = Math.max(1, Math.floor(timeDiff / (1000 * 60 * 60 * 24))); // At least 1 day
@@ -110,6 +108,7 @@ function weightedRandomPick(activities) {
     let random = Math.random() * totalWeight;
   
 
+    //Iterate through all the acitivity and pick one item. And return that item
     for (let i = 0; i < activitiesWithWeights.length; i++) {
         const activity = activitiesWithWeights[i];
         if (random < activity.weight) {
@@ -121,9 +120,9 @@ function weightedRandomPick(activities) {
     }
   }
 
-
+//Function to generate each rows of the activity table after each action (addition, deletion, picked..)
 function updateTable(){
-    //Code to delete all the rows (Overhaul of all table/its rows related variables)
+    //delete all the rows (Overhaul of all table/its rows related variables)
     while(activityTable.rows.length > 0){
         activityTable.deleteRow(0);
         console.log("check");
@@ -147,6 +146,7 @@ function updateTable(){
     })
 }
 
+//function to save the array of activity objects to localStorage everytime an action is done to the array.
 function saveToStorage(){
     localStorage.setItem('myData', JSON.stringify(storedData));
 }
