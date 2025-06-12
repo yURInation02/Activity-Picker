@@ -4,6 +4,7 @@ TO DO Feature:
     - Toggle show/no show table 
     - ✅Picked activity shows up on a screen as a overlay
     - add animation for the Overlay
+    - Priority number on HTML -> color coding
     - ✅Recently picked activty has lower chance of being picked again at Default
         - ✅But, set priority to alter the likelihood of being picked consectively
 
