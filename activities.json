@@ -9,7 +9,11 @@
         {"name":"Reading", "lastUpdateDate": null},
         {"name":"Magic", "lastUpdateDate": null},
         {"name":"Beatbox", "lastUpdateDate": null},
-        {"name": "Drawing", "lastUpdateDate": null}
+        {"name": "Drawing", "lastUpdateDate": null},
+        {"name": "Language", "lastUpdateDate": null},
+        {"name": "Cooking", "lastUpdateDate": null},
+        {"name": "Singing", "lastUpdateDate": null},
+        {"name": "Dancing", "lastUpdateDate": null}
     ],
  
     "lastPicked":{}
